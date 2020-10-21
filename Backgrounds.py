@@ -115,7 +115,7 @@ AT_long_min=-60
 EU_lat_max=70
 EU_lat_min=35
 EU_long_max=40
-EU_long_min=25
+EU_long_min=-25
 
 # Define lists
 
