@@ -83,8 +83,8 @@ for i in range(len(months)):
 flight_no=0
 
 nof=100 # limit to nof flights
-#for i in range(len(flights_with_CO_02)):
-for i in range(nof):
+for i in range(len(flights_with_CO_02)):
+#for i in range(nof):
   
     flights_with_CO_02.drivers_load_args.iloc[i]
     ds = xr.load_dataset(*json.loads(flights_with_CO_02.drivers_load_args.iloc[i])["args"])
@@ -94,24 +94,24 @@ for i in range(nof):
     date_time = start_datetime.split("T")
     date = date_time[0]
     time = datetime.datetime.strptime(date, "%Y-%m-%d")
-    print(date)       
+    #print(date)       
     ds['data_vars_cruise'] = xr.where(ds["air_press_AC"]<30000, True, False)
     
     if ds.source=='IAGOS-MOZAIC':
         #print('Selected MOZAIC')
         data_CO = ds.CO_PM.where(ds.data_vars_cruise==True)
     elif ds.source=='IAGOS-CORE':
-        print("Selected CORE")
+        #print("Selected CORE")
         data_CO = ds.CO_P1.where(ds.data_vars_cruise==True)
     elif ds.source=="IAGOS-CARIBIC":
         #print("Selected CARIBIC")
         #if ds.CO_PC1.any() > 0:
         if date < '2005-05-19':
-            print('Using CO_PC1')
+            #print('Using CO_PC1')
             data_CO = ds.CO_PC1.where(ds.data_vars_cruise==True)
         elif date >= '2005-05-19':    
         #elif ds.CO_PC2.any() > 0:
-            print('Using CO_PC2')
+            #print('Using CO_PC2')
             data_CO = ds.CO_PC2.where(ds.data_vars_cruise==True)
         else:
             print('Did not find CARIBIC data:', ds.source)
@@ -121,7 +121,9 @@ for i in range(nof):
     t=ds.UTC_time.where(ds.data_vars_cruise==True)
     lon=ds.lon.where(ds.data_vars_cruise==True)
     lat=ds.lat.where(ds.data_vars_cruise==True)
-    
+
+    flight_no+=1
+
     k = 0
     for k in range(len(months)):
     #print(k+1)
