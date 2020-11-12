@@ -80,11 +80,14 @@ for i in range(len(months)):
     for j in range(len(zones)):
         locals()['counts_{}_{}'.format(months[i],zones[j])] = []
 
+
+print("Finished Setup")
+
 flight_no=0
 
-nof=100 # limit to nof flights
-for i in range(len(flights_with_CO_02)):
-#for i in range(nof):
+nof=2000 # limit to nof flights
+#for i in range(len(flights_with_CO_02)):
+for i in range(nof):
   
     flights_with_CO_02.drivers_load_args.iloc[i]
     ds = xr.load_dataset(*json.loads(flights_with_CO_02.drivers_load_args.iloc[i])["args"])
@@ -1117,10 +1120,148 @@ if flights_DEC_NA > 0:
     print("           Median DEC_NA :",median_CO_DEC_NA)
     print("               Q3 DEC_NA :",upper_quartile_CO_DEC_NA)
     print("               Q1 DEC_NA :",lower_quartile_CO_DEC_NA)
+    
 ###########################################################################
+# Plot of each months values and the median for NA region
 
-#print(len(counts_JUL_NA))
-#print(len(CO_JUL_NA))
+CO_JAN_NA_list = [float(n) for n in CO_JAN_NA]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_JAN_NA, CO_JAN_NA_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_JAN_NA, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_JAN_NA')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_JAN_NA.png")
+plt.clf()
+
+CO_FEB_NA_list = [float(n) for n in CO_FEB_NA]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_FEB_NA, CO_FEB_NA_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_FEB_NA, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_FEB_NA')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_FEB_NA.png")
+plt.clf()
+
+CO_MAR_NA_list = [float(n) for n in CO_MAR_NA]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_MAR_NA, CO_MAR_NA_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_MAR_NA, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_MAR_NA')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_MAR_NA.png")
+plt.clf()
+
+CO_APR_NA_list = [float(n) for n in CO_APR_NA]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_APR_NA, CO_APR_NA_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_APR_NA, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_APR_NA')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_APR_NA.png")
+plt.clf()
+
+CO_MAY_NA_list = [float(n) for n in CO_MAY_NA]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_MAY_NA, CO_MAY_NA_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_MAY_NA, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_MAY_NA')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_MAY_NA.png")
+plt.clf()
+
+CO_JUN_NA_list = [float(n) for n in CO_JUN_NA]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_JUN_NA, CO_JUN_NA_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_JUN_NA, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_JUN_NA')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_JUN_NA.png")
+plt.clf()
+
 CO_JUL_NA_list = [float(n) for n in CO_JUL_NA]
 
 #set plot parameters
@@ -1140,12 +1281,10 @@ ax1.tick_params(axis='y', labelcolor=color)
 plt.axhline(y=median_CO_JUL_NA, linestyle='-.', color='tab:red')
 legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
 fig.suptitle('CO_JUL_NA')
-#plt.show()
+##plt.show()
 plt.savefig("plots/backgrounds/CO_JUL_NA.png")
 plt.clf()
 
-#print(len(counts_AUG_NA))
-#print(len(CO_AUG_NA))
 CO_AUG_NA_list = [float(n) for n in CO_AUG_NA]
 
 #set plot parameters
@@ -1165,34 +1304,660 @@ ax1.tick_params(axis='y', labelcolor=color)
 plt.axhline(y=median_CO_AUG_NA, linestyle='-.', color='tab:red')
 legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
 fig.suptitle('CO_AUG_NA')
-#plt.show()
+##plt.show()
 plt.savefig("plots/backgrounds/CO_AUG_NA.png")
 plt.clf()
 
-print(len(counts_JUN_NA))
-print(len(CO_JUN_NA))
-CO_JUN_NA_list = [float(n) for n in CO_JUN_NA]
+CO_SEP_NA_list = [float(n) for n in CO_SEP_NA]
 
 #set plot parameters
-#params = {'legend.fontsize': 'x-large',
-#          'figure.figsize': (20, 5),
-#         'axes.labelsize': 'x-large',
-#         'axes.titlesize':'x-large',
-#         'xtick.labelsize':'x-large',
-#         'ytick.labelsize':'x-large'}
-#plt.rcParams.update(params)
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
 fig, ax1 = plt.subplots()
 #color = 'tab:red'
 ax1.set_ylabel('CO (ppb)')       
 ax1.set_xlabel('No of measurements')       
-ax1.plot(counts_JUN_NA, CO_JUN_NA_list, color='tab:red', label='CO')  
+ax1.plot(counts_SEP_NA, CO_SEP_NA_list, color='tab:red', label='CO')  
 ax1.tick_params(axis='y', labelcolor=color)
-plt.axhline(y=median_CO_JUN_NA, linestyle='-.', color='tab:red')
+plt.axhline(y=median_CO_SEP_NA, linestyle='-.', color='tab:red')
 legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
-fig.suptitle('CO_JUN_NA')
-#plt.show()
-plt.savefig("plots/backgrounds/CO_JUN_NA.png")
+fig.suptitle('CO_SEP_NA')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_SEP_NA.png")
 plt.clf()
+
+CO_OCT_NA_list = [float(n) for n in CO_OCT_NA]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_OCT_NA, CO_OCT_NA_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_OCT_NA, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_OCT_NA')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_OCT_NA.png")
+plt.clf()
+
+CO_NOV_NA_list = [float(n) for n in CO_NOV_NA]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_NOV_NA, CO_NOV_NA_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_NOV_NA, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_NOV_NA')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_NOV_NA.png")
+plt.clf()
+
+CO_DEC_NA_list = [float(n) for n in CO_DEC_NA]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_DEC_NA, CO_DEC_NA_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_DEC_NA, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_DEC_NA')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_DEC_NA.png")
+plt.clf()
+
+###########################################################################
+# Plot of each months values and the median for AT region
+
+CO_JAN_AT_list = [float(n) for n in CO_JAN_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_JAN_AT, CO_JAN_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_JAN_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_JAN_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_JAN_AT.png")
+plt.clf()
+
+CO_FEB_AT_list = [float(n) for n in CO_FEB_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_FEB_AT, CO_FEB_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_FEB_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_FEB_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_FEB_AT.png")
+plt.clf()
+
+CO_MAR_AT_list = [float(n) for n in CO_MAR_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_MAR_AT, CO_MAR_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_MAR_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_MAR_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_MAR_AT.png")
+plt.clf()
+
+CO_APR_AT_list = [float(n) for n in CO_APR_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_APR_AT, CO_APR_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_APR_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_APR_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_APR_AT.png")
+plt.clf()
+
+CO_MAY_AT_list = [float(n) for n in CO_MAY_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_MAY_AT, CO_MAY_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_MAY_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_MAY_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_MAY_AT.png")
+plt.clf()
+
+CO_JUN_AT_list = [float(n) for n in CO_JUN_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_JUN_AT, CO_JUN_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_JUN_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_JUN_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_JUN_AT.png")
+plt.clf()
+
+CO_JUL_AT_list = [float(n) for n in CO_JUL_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_JUL_AT, CO_JUL_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_JUL_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_JUL_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_JUL_AT.png")
+plt.clf()
+
+CO_AUG_AT_list = [float(n) for n in CO_AUG_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+#color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_AUG_AT, CO_AUG_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_AUG_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_AUG_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_AUG_AT.png")
+plt.clf()
+
+CO_SEP_AT_list = [float(n) for n in CO_SEP_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+#color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_SEP_AT, CO_SEP_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_SEP_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_SEP_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_SEP_AT.png")
+plt.clf()
+
+CO_OCT_AT_list = [float(n) for n in CO_OCT_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_OCT_AT, CO_OCT_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_OCT_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_OCT_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_OCT_AT.png")
+plt.clf()
+
+CO_NOV_AT_list = [float(n) for n in CO_NOV_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_NOV_AT, CO_NOV_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_NOV_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_NOV_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_NOV_AT.png")
+plt.clf()
+
+CO_DEC_AT_list = [float(n) for n in CO_DEC_AT]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_DEC_AT, CO_DEC_AT_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_DEC_AT, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_DEC_AT')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_DEC_AT.png")
+plt.clf()
+
+###########################################################################
+# Plot of each months values and the median for EU region
+
+CO_JAN_EU_list = [float(n) for n in CO_JAN_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_JAN_EU, CO_JAN_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_JAN_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_JAN_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_JAN_EU.png")
+plt.clf()
+
+CO_FEB_EU_list = [float(n) for n in CO_FEB_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_FEB_EU, CO_FEB_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_FEB_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_FEB_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_FEB_EU.png")
+plt.clf()
+
+CO_MAR_EU_list = [float(n) for n in CO_MAR_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_MAR_EU, CO_MAR_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_MAR_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_MAR_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_MAR_EU.png")
+plt.clf()
+
+CO_APR_EU_list = [float(n) for n in CO_APR_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_APR_EU, CO_APR_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_APR_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_APR_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_APR_EU.png")
+plt.clf()
+
+CO_MAY_EU_list = [float(n) for n in CO_MAY_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_MAY_EU, CO_MAY_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_MAY_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_MAY_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_MAY_EU.png")
+plt.clf()
+
+CO_JUN_EU_list = [float(n) for n in CO_JUN_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_JUN_EU, CO_JUN_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_JUN_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_JUN_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_JUN_EU.png")
+plt.clf()
+
+CO_JUL_EU_list = [float(n) for n in CO_JUL_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_JUL_EU, CO_JUL_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_JUL_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_JUL_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_JUL_EU.png")
+plt.clf()
+
+CO_AUG_EU_list = [float(n) for n in CO_AUG_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+#color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_AUG_EU, CO_AUG_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_AUG_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_AUG_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_AUG_EU.png")
+plt.clf()
+
+CO_SEP_EU_list = [float(n) for n in CO_SEP_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+#color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_SEP_EU, CO_SEP_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_SEP_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_SEP_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_SEP_EU.png")
+plt.clf()
+
+CO_OCT_EU_list = [float(n) for n in CO_OCT_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_OCT_EU, CO_OCT_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_OCT_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_OCT_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_OCT_EU.png")
+plt.clf()
+
+CO_NOV_EU_list = [float(n) for n in CO_NOV_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_NOV_EU, CO_NOV_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_NOV_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_NOV_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_NOV_EU.png")
+plt.clf()
+
+CO_DEC_EU_list = [float(n) for n in CO_DEC_EU]
+
+#set plot parameters
+params = {'legend.fontsize': 'x-large',
+          'figure.figsize': (20, 5),
+         'axes.labelsize': 'x-large',
+         'axes.titlesize':'x-large',
+         'xtick.labelsize':'x-large',
+         'ytick.labelsize':'x-large'}
+plt.rcParams.update(params)
+fig, ax1 = plt.subplots()
+color = 'tab:red'
+ax1.set_ylabel('CO (ppb)')       
+ax1.set_xlabel('No of measurements')       
+ax1.plot(counts_DEC_EU, CO_DEC_EU_list, color='tab:red', label='CO')  
+ax1.tick_params(axis='y', labelcolor=color)
+plt.axhline(y=median_CO_DEC_EU, linestyle='-.', color='tab:red')
+legend = ax1.legend(loc='upper left', shadow=True, fontsize='large')
+fig.suptitle('CO_DEC_EU')
+##plt.show()
+plt.savefig("plots/backgrounds/CO_DEC_EU.png")
+plt.clf()
+
 
 ###########################################################################
 #Box and whisker plot of values of CO background each month for each region
@@ -1213,7 +1978,8 @@ data_DEC = CO_DEC_NA
 data = [data_JAN, data_FEB, data_MAR, data_APR, data_MAY, data_JUN, data_JUL, data_AUG, data_SEP, data_OCT, data_NOV, data_DEC] 
   
 fig1, ax1 = plt.subplots()
-ax1.set_title('CO Background North America 2015')
+ax1.set_title('CO Background North America')
+ax1.set_ylabel('NOx (ppb)') 
 ax1.boxplot(data, labels=['JAN', 'FEB', 'MAR', 'APR', 'MAY','JUN','JUL','AUG','SEP', 'OCT', 'NOV', 'DEC'], showfliers=False)
 plt.savefig("plots/backgrounds/CO_NA.png")
 plt.clf()
@@ -1234,7 +2000,8 @@ data_DEC = CO_DEC_AT
 data = [data_JAN, data_FEB, data_MAR, data_APR, data_MAY, data_JUN, data_JUL, data_AUG, data_SEP, data_OCT, data_NOV, data_DEC] 
   
 fig1, ax1 = plt.subplots()
-ax1.set_title('CO Background Atlantic 2015')
+ax1.set_title('CO Background Atlantic')
+ax1.set_ylabel('NOx (ppb)') 
 ax1.boxplot(data, labels=['JAN', 'FEB', 'MAR', 'APR', 'MAY','JUN','JUL','AUG','SEP', 'OCT', 'NOV', 'DEC'], showfliers=False)
 plt.savefig("plots/backgrounds/CO_AT.png")
 plt.clf()
@@ -1255,10 +2022,18 @@ data_DEC = CO_DEC_EU
 data = [data_JAN, data_FEB, data_MAR, data_APR, data_MAY, data_JUN, data_JUL, data_AUG, data_SEP, data_OCT, data_NOV, data_DEC] 
   
 fig1, ax1 = plt.subplots()
-ax1.set_title('CO Background Europe 2015')
+ax1.set_title('CO Background Europe')
+ax1.set_ylabel('NOx (ppb)') 
 ax1.boxplot(data, labels=['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN','JUL','AUG','SEP', 'OCT', 'NOV', 'DEC'], showfliers=False)
 plt.savefig("plots/backgrounds/CO_EU.png")
 plt.clf()
+
+
+##############################################################################
+# Close dataframe
+
+df.close()
+
 
 
 
